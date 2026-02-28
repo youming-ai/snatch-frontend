@@ -1,14 +1,17 @@
+// Astro configuration for Cloudflare Pages deployment
+// Usage: Rename this file to astro.config.mjs when deploying to Cloudflare
+
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
-import node from '@astrojs/node';
+import cloudflare from '@astrojs/cloudflare';
 import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
     integrations: [react()],
     output: 'server',
-    adapter: node({
-        mode: 'standalone',
+    adapter: cloudflare({
+        platform: 'pages',
     }),
     vite: {
         plugins: [tailwindcss()],
